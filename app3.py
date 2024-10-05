@@ -90,7 +90,7 @@ st.markdown("""
         }
     </style>
     """, unsafe_allow_html=True)
-st.markdown('<p class="big-font">Lineas equipotenciales!</p>', unsafe_allow_html=True)
+st.markdown('<p class="big-font">Líneas equipotenciales!</p>', unsafe_allow_html=True)
    
 uploaded_file =  st.file_uploader("Choose a file", 
                                   type=['csv', 'xlsx', 'txt'])
