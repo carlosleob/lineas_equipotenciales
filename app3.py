@@ -74,7 +74,21 @@ def grafico2(nxpyp,best): #datos para construir campo E
             V[k,j]=a*(V2n-V1n)
     return V
 
-st.write('Líneas Equipotenciales')    
+st.markdown("""
+    <style>
+        .big-font {
+            font-size:50px !important;
+        }
+        .medium-font {
+            font-size:30px !important;
+        }
+        .small-font {
+            font-size:15px !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+st.markdown('<p class="big-font">Lineas equipotenciales!</p>', unsafe_allow_html=True)
+   
 uploaded_file =  st.file_uploader("Choose a file", 
                                   type=['csv', 'xlsx', 'txt'])
 
