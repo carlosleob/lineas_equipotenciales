@@ -77,7 +77,7 @@ def grafico2(nxpyp,best): #datos para construir campo E
 st.markdown("""
     <style>
         body {
-            font-size:20px !important;
+            font-size:25px !important;
         }
         .big-font {
             font-size:50px !important;
@@ -90,7 +90,7 @@ st.markdown("""
         }
     </style>
     """, unsafe_allow_html=True)
-st.markdown('<p class="big-font">Líneas equipotenciales!</p>', unsafe_allow_html=True)
+st.markdown('<p class="big-font">Lineas equipotenciales!</p>', unsafe_allow_html=True)
    
 uploaded_file =  st.file_uploader("Choose a file", 
                                   type=['csv', 'xlsx', 'txt'])
@@ -120,7 +120,7 @@ if uploaded_file is not None:
 df = df.dropna()  # Remove rows with missing values
     
 datos=df.values #matrix de datos a trabajar
-st.write(df) #muestra los datos de la hoja de excel
+st.write(df) #muestra los datos de la hoja de excel,csv o txt
     
     
 
@@ -166,11 +166,12 @@ best_fun1=grafico1(nxpyp0,best_val)
 
 fig, ax = plt.subplots(figsize=(3, 3))
 ax.plot(datos[:,1],datos[:,0],'*',c='r',label='datos')
-ax.plot(xp,best_fun1,ls='-',c='b',label='Modelos')
+ax.plot(xp,best_fun1,ls='-',c='b',label='modelo')
 ax.set_xlabel('x(cm)')
 ax.set_ylabel('V(voltios)')
 ax.set_title('Potencial en la línea central')
 ax.legend()
+
 st.pyplot(fig)
 
 #graficando las equipotenciales y el campo
@@ -203,6 +204,7 @@ ax1.clabel(CS,inline=True, fontsize=10)
 ax1.set_xlabel('x(cm)')
 ax1.set_ylabel('y(cm)')
 ax.set_title('Equipotenciales y Campo Eléctrico')
+plt.show()
 st.pyplot(fig1)
 
 
