@@ -165,8 +165,8 @@ best_fun1=grafico1(nxpyp0,best_val)
 
 
 fig, ax = plt.subplots(figsize=(3, 3))
-ax.plot(datos[:,1],datos[:,0],'*',c='r',label='data')
-ax.plot(xp,best_fun1,ls='-',c='b',label='fiteo')
+ax.plot(datos[:,1],datos[:,0],'*',c='r',label='datos')
+ax.plot(xp,best_fun1,ls='-',c='b',label='Modelos')
 ax.set_xlabel('x(cm)')
 ax.set_ylabel('V(voltios)')
 ax.set_title('Potencial en la línea central')
