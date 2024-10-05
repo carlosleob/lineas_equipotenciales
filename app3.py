@@ -76,6 +76,9 @@ def grafico2(nxpyp,best): #datos para construir campo E
 
 st.markdown("""
     <style>
+        body {
+            font-size:20px !important;
+        }
         .big-font {
             font-size:50px !important;
         }
