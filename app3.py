@@ -170,8 +170,7 @@ ax.plot(xp,best_fun1,ls='-',c='b',label='fiteo')
 ax.set_xlabel('x(cm)')
 ax.set_ylabel('V(voltios)')
 ax.set_title('Potencial en la línea central')
-
-plt.show()
+ax.legend()
 st.pyplot(fig)
 
 #graficando las equipotenciales y el campo
@@ -204,7 +203,6 @@ ax1.clabel(CS,inline=True, fontsize=10)
 ax1.set_xlabel('x(cm)')
 ax1.set_ylabel('y(cm)')
 ax.set_title('Equipotenciales y Campo Eléctrico')
-plt.show()
 st.pyplot(fig1)
 
 
