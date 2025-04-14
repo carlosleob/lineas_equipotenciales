@@ -126,12 +126,12 @@ st.write(df) #muestra los datos de la hoja de excel,csv o txt
 
 #descripción del modelo: ecuacion tipo latex
 st.text('El modelo físico se basa en la siguiente ecuación')
-st.latex(r'V=K\,V_0\left(\frac{1}{((x+d_1)^2+y^2)^{r_1}}-\frac{1}{(x-d_2)^2+y^2)^{r_2}}\right)')
+st.latex(r'V=K\,V_0\left(\frac{1}{((x+b_1)^2+y^2)^{r_1}}-\frac{1}{(x-b_2)^2+y^2)^{r_2}}\right)')
 
 st.text('Ingrese los valores experimentales de los siguientes parametros')
 V0 = st.number_input('Enter parameter V0 (voltios):')
-d1 = st.number_input('Enter parameter d1(cm):')
-d2 = st.number_input('Enter parameter d2(cm):')
+b1 = st.number_input('Enter parameter d1(cm):')
+b2 = st.number_input('Enter parameter d2(cm):')
 
 st.text('Ingrese lo valores considerados para los siguientes parametros')
 K = st.number_input('Enter parameter K:')
@@ -142,20 +142,20 @@ r2 = st.number_input('Enter parameter r2:')
 
 Vz,XY=organizar(datos) #organiza en datos para graficar
 
-p_ini=[V0,d1,d2,r1,r2,K]
+p_ini=[V0,b1,b2,r1,r2,K]
 
 best_val=Fiteo(XY.T,Vz,p_ini)
-V0,d1,d2,r1,r2,a=best_val
+V0,b1,b2,r1,r2,a=best_val
 
 st.text('Valores optimizados para el modelo de acuerdo a los datos experimentales')
 st.write('V0=',"{:.3f}".format(V0))
-st.write('d1=',"{:.3f}".format(d1))
-st.write('d2=',"{:.3f}".format(d2))
+st.write('b1=',"{:.3f}".format(b1))
+st.write('b2=',"{:.3f}".format(b2))
 st.write('r1=',"{:.3e}".format(r1))
 st.write('r2=',"{:.3e}".format(r2))
 st.write('K=',"{:.3f}".format(a))
 
-#crear datos con los calores optimizados
+#crear datos con los valores optimizados
 xp=np.linspace(min(XY[:,0])-0.1,max(XY[:,0])+0.1,200)
 yp=np.linspace(min(XY[:,1])-0.1,max(XY[:,1])+0.1,200)
 
