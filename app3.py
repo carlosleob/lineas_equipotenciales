@@ -90,7 +90,7 @@ st.markdown("""
         }
     </style>
     """, unsafe_allow_html=True)
-st.markdown('<p class="big-font">Lineas equipotenciales!</p>', unsafe_allow_html=True)
+st.markdown('<p class="big-font">Equipotential Lines!</p>', unsafe_allow_html=True)
    
 uploaded_file =  st.file_uploader("Choose a file", 
                                   type=['csv', 'xlsx', 'txt'])
@@ -125,18 +125,18 @@ st.write(df) #muestra los datos de la hoja de excel,csv o txt
     
 
 #descripción del modelo: ecuacion tipo latex
-st.text('El modelo físico se basa en la siguiente ecuación')
-st.latex(r'V=K\,V_0\left(\frac{1}{((x+d_1)^2+y^2)^{r_1}}-\frac{1}{(x-d_2)^2+y^2)^{r_2}}\right)')
+st.text('Physic Model is give by')
+st.latex(r'V=K\,V_0\left(\frac{1}{((x+b_1)^2+y^2)^{r_1}}-\frac{1}{(x-b_2)^2+y^2)^{r_2}}\right)')
 
-st.text('Ingrese los valores experimentales de los siguientes parametros')
-V0 = st.number_input('Enter parameter V0 (voltios):')
-d1 = st.number_input('Enter parameter d1(cm):')
-d2 = st.number_input('Enter parameter d2(cm):')
+st.text('Enter the experimental values for')
+V0 = st.number_input('Parameter V0 (voltios):')
+d1 = st.number_input('Parameter b1(cm):')
+d2 = st.number_input('Parameter b2(cm):')
 
-st.text('Ingrese lo valores considerados para los siguientes parametros')
-K = st.number_input('Enter parameter K:')
-r1 = st.number_input('Enter parameter r1:')
-r2 = st.number_input('Enter parameter r2:')
+st.text('Enter the initials values for')
+K = st.number_input('Parameter K:')
+r1 = st.number_input('Parameter r1:')
+r2 = st.number_input('Parameter r2:')
 
 #obtención de lo mejores valores para los parametros del modelo
 
@@ -147,7 +147,7 @@ p_ini=[V0,d1,d2,r1,r2,K]
 best_val=Fiteo(XY.T,Vz,p_ini)
 V0,d1,d2,r1,r2,a=best_val
 
-st.text('Valores optimizados para el modelo de acuerdo a los datos experimentales')
+st.text('Optimized parameters values')
 st.write('V0=',"{:.3f}".format(V0))
 st.write('d1=',"{:.3f}".format(d1))
 st.write('d2=',"{:.3f}".format(d2))
@@ -169,9 +169,9 @@ ax.plot(datos[:,1],datos[:,0],'*',c='r',label='datos')
 ax.plot(xp,best_fun1,ls='-',c='b',label='modelo')
 ax.set_xlabel('x(cm)')
 ax.set_ylabel('V(voltios)')
-ax.set_title('Potencial en la línea central')
+ax.set_title('Data Fitted for y=0 line')
 ax.legend()
-
+plt.show()
 st.pyplot(fig)
 
 #graficando las equipotenciales y el campo
@@ -203,7 +203,8 @@ CS = ax1.contour(xp,yp,Vp,nlv,levels=levels,colors='r')# Negative contours defau
 ax1.clabel(CS,inline=True, fontsize=10)
 ax1.set_xlabel('x(cm)')
 ax1.set_ylabel('y(cm)')
-ax.set_title('Equipotenciales y Campo Eléctrico')
+ax1.set_title('Equipotential lines and Electric field')
+ax1.legend()
 plt.show()
 st.pyplot(fig1)
 
